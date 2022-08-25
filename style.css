@@ -1,0 +1,18 @@
+
+
+.generator {
+    width: 100vh;
+    height: 50vh;
+    background-color: aqua;
+    margin-left: 55vh;
+    margin-top: 10vh;
+    border-radius: 20px;
+}
+
+.generator h1{
+    padding-top: 10vh;
+}
+
+.buttonArea {
+    margin-top: 2vh;
+}
