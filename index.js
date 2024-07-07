@@ -4,10 +4,16 @@ let copyBtn = document.getElementById('copyText')
 let latestQuote = ''; // variable to store the latest quote
 
 btn.addEventListener('click', function () {
-    fetch('https://api.quotable.io/random')
+    fetch('https://api.api-ninjas.com/v1/quotes?category=happiness', {
+        headers: {
+            'X-Api-Key': 'kjoU+11C92/wu+A8LYDJrw==sxZOppFnoTlbgB4I'
+        }
+    })
         .then(response => response.json())
         .then(data => {
-            latestQuote = `"${data.content}" - ${data.author}`; // store the latest quote
+            // Assuming the API returns an array and we're interested in the first quote
+            const firstQuote = data[0]; // Adjust to access the first element of the array
+            const latestQuote = `"${firstQuote.quote}" - ${firstQuote.author}`; // Use firstQuote for quote and author
             output.innerHTML = latestQuote;
             console.log(latestQuote);
         })
@@ -32,4 +38,8 @@ copyBtn.addEventListener('click', function () {
         title: 'Copied',
         text: 'Text has been copied.',
     });
+});
+
+document.addEventListener('contextmenu', function (event) {
+    event.preventDefault();
 });
